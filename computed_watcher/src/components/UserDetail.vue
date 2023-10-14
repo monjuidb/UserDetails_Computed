@@ -22,6 +22,17 @@
     return 'You are not eligible to vote.';
   }
 })
+
+  watch(
+  () => new Date().getFullYear() - new Date(user.value.birthdate).getFullYear(),
+  (newAge) => {
+    if (newAge >= 18) {
+      profileMessage.value = 'eligible for voting';
+    } else {
+      profileMessage.value = 'not eligible for voting';
+    }
+  }
+)
   </script>
 
 <template>
